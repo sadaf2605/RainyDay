@@ -4,8 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.sadafnoor.RainyDay.Views.WorldRenderer;
 
 public class World {
+	public WorldRenderer render;
 
  /** The blocks making up the world **/
  Array<Block> blocks = new Array<Block>();
@@ -61,4 +63,11 @@ public class World {
   blocks.add(new Block(new Vector2(6, 4)));
   blocks.add(new Block(new Vector2(6, 5)));
  }
+ 
+
+ public String textToDisplay="Nothing";
+public String textToDisplay() {
+	// TODO Auto-generated method stub
+	return textToDisplay;
+}
 }

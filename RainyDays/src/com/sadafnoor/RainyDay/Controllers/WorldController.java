@@ -87,6 +87,14 @@ public class WorldController {
 		
 	}
 
+	private void raincollition(RainDrop r){
+		if (r.position.y-bob.position.y <bob.SIZE && r.position.x-bob.position.x <bob.SIZE ){
+			world.textToDisplay="MOM: \"You will get cold!\" MOM Anger:"+(++bob.score);
+			
+		}else{
+			world.textToDisplay="MOM anger:"+(bob.score);
+		}
+	}
 	/** Change Bob's state and parameters based on input controls **/
 	private void processInput() {
 		
@@ -99,6 +107,7 @@ public class WorldController {
 			background.velocity.x= -Background.SPEED;
 			for(RainDrop r :rainDrops){
 				r.velocity.x= -Background.SPEED;
+				raincollition(r);
 			}
 		}
 		if (keys.get(Keys.RIGHT)) {
@@ -109,6 +118,8 @@ public class WorldController {
 			background.velocity.x= Background.SPEED;
 			for(RainDrop r :rainDrops){
 				r.velocity.x= Background.SPEED;
+				raincollition(r);
+				
 			}
 		}
 		// need to check if both or none direction are pressed, then Bob is idle

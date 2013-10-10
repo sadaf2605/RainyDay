@@ -35,6 +35,8 @@ public class WorldRenderer {
 
  public WorldRenderer(World world) {
   this.world = world;
+  world.render=this;
+  
   this.cam = new OrthographicCamera(10, 7);
   this.cam.position.set(5, 3.5f, 0);
   this.cam.update();
@@ -91,7 +93,8 @@ public class WorldRenderer {
 
 	private RainDrop[] rainDrops;
 	private FileHandle textureAtlas;
-	private FileHandle effectFile;                                        
+	private FileHandle effectFile;
+	public String textToDisplay;                                        
 
 	private void loadTextures() {
 		walkSheet = new  Texture(Gdx.files.internal("animation_sheet.png"));
@@ -119,14 +122,20 @@ public class WorldRenderer {
 	}	
 	public void render(float delta) {
 		 spriteBatch.begin();
-	
+		 
+		 
 		 	drawBackground();
-			//drawBlocks();
+		 			//drawBlocks();
 			drawBob();
 			
 			drawParticles(delta);
 
-		 
+			
+			textToDisplay = world.textToDisplay();
+			BitmapFont font = new BitmapFont();
+			//Gdx.graphics.getGL20().glClearColor(0, 0, 0, 0); 
+			//Gdx.graphics.getGL20().glClear(Gdx.gl10.GL_COLOR_BUFFER_BIT);
+			font.draw(spriteBatch, textToDisplay, 2f*ppuX,2f*ppuY);
 		 		
 		 spriteBatch.end();
 

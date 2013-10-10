@@ -8,6 +8,8 @@ public class Bob {
  public enum State {
   IDLE, WALKING, JUMPING, DYING
  }
+ 
+ public int score=0;
 
  public static final float SPEED = 2f; // unit per second
  static final float JUMP_VELOCITY = 1f;
